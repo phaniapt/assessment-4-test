@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    stages{
         stage('ECR creation') {
             steps {
                 sh "terraform init"
@@ -16,4 +17,5 @@ pipeline {
         //         sh ""
         //     }
         // }
+    }
 }
