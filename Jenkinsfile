@@ -20,13 +20,19 @@
 
 pipeline {
     agent any
+<<<<<<< HEAD
     stages {
         stage('getCode'){
+=======
+    stages{
+        stage('ECR creation') {
+>>>>>>> 8a5eec9a2c6f7e366b4d123e98cb9aac22c71bbd
             steps {
                 deleteDir()
                 git credentialsId: 'jenkins-master-ssh', url: 'git@github.com:' + env.SPACE + '/' + env.REPO + '.git', branch: env.BRANCH_NAME
             }
         }
+<<<<<<< HEAD
         stage('Build'){
             steps {
                 script {
@@ -50,4 +56,17 @@ pipeline {
             }
         }
 }
+=======
+        // stage('Docker build') {
+        //     steps {
+        //         sh 'docker build -t my-testecr-assessment-4 .'
+        //     }
+        // }
+        // stage('image pushing') {
+        //     steps {
+        //         sh ""
+        //     }
+        // }
+    }
+>>>>>>> 8a5eec9a2c6f7e366b4d123e98cb9aac22c71bbd
 }
