@@ -1,9 +1,9 @@
 pipeline {
     agent any
         environment {
-        ECR_REPO = "my-ecr-repo-65"
-        ECR_URL = "240680229609.dkr.ecr.ap-south-1.amazonaws.com/my-ecr-repo-65"
-        AWS_ACC_ID ='240680229609'
+        // ECR_REPO = "my-ecr-repo-65"
+        // ECR_URL = "240680229609.dkr.ecr.ap-south-1.amazonaws.com/my-ecr-repo-65"
+        // AWS_ACC_ID ='240680229609'
     }
     stages {
         stage('getCode'){
