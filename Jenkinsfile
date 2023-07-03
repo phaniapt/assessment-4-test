@@ -1,7 +1,7 @@
 pipeline {
     agent any
         environment {
-        ECR_REPO = "my-ecr-repo-40"
+        ECR_REPO = "my-ecr-repo-39"
         ECR_URL = "240680229609.dkr.ecr.ap-south-1.amazonaws.com/my-ecr-repo-65"
         AWS_ACC_ID ='240680229609'
     }
