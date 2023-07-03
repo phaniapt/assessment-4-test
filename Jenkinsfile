@@ -1,9 +1,9 @@
 pipeline {
     agent any
         environment {
-        // ECR_REPO = "my-ecr-repo-65"
-        // ECR_URL = "240680229609.dkr.ecr.ap-south-1.amazonaws.com/my-ecr-repo-65"
-        // AWS_ACC_ID ='240680229609'
+        ECR_REPO = "my-ecr-repo-76"
+        ECR_URL = "240680229609.dkr.ecr.ap-south-1.amazonaws.com/my-ecr-repo-65"
+        AWS_ACC_ID ='240680229609'
     }
     stages {
         stage('getCode'){
@@ -31,26 +31,26 @@ pipeline {
                 }
             }
         }
-    //     stage('Build'){
-    //         steps {
-    //             script {
-    //                 app = docker.build("${ECR_URL}/${ECR_REPO}" + ":${BUILD_NUMBER}")
-    //             }
-    //         }
-    //     }
-    //      stage('UploadToECR'){
-    //         steps {
-    //             script {
-    //                 withDockerRegistry(
-    //                     credentialsId: 'ecr:ap-south-1:aws-credentials-phani',
-    //                     url: "https://${env.AWS_ACC_ID}.dkr.ecr.ap-south-1.amazonaws.com") {
-    //                         app.push("${env.BUILD_NUMBER}")
-    //                 }
-    //                 sh '''
-    //                 docker images
-    //                 '''
-    //             }
-    //         }
-    //     }
+        stage('Build'){
+            steps {
+                script {
+                    app = docker.build("${ECR_URL}/${ECR_REPO}" + ":${BUILD_NUMBER}")
+                }
+            }
+        }
+         stage('UploadToECR'){
+            steps {
+                script {
+                    withDockerRegistry(
+                        credentialsId: 'ecr:ap-south-1:aws-credentials-phani',
+                        url: "https://${env.AWS_ACC_ID}.dkr.ecr.ap-south-1.amazonaws.com") {
+                            app.push("${env.BUILD_NUMBER}")
+                    }
+                    sh '''
+                    docker images
+                    '''
+                }
+            }
+        }
     }
 }
